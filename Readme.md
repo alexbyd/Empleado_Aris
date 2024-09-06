@@ -7,10 +7,12 @@ Tus logros: Partes del proyecto que sientas orgullo de haber logrado, incluso pu
 Estado del proyecto: Especifica si seguirás trabajando o ya está finalizado.
 
 
-echo "# Empleado_Aris" >> README.md 
-git init 
-git add README.md 
-git commit -m "primer commit" 
-git branch -M main 
-git remote add origin https://github.com/alexdanielbaenayepez/Empleado_Aris.git
- git push -u origin main
+
+para instalar un paquete especifico en un entorno de pyton se hace con 
+
+`` Python 
+
+python -m pip install SomePackage==1.0.4    # specific version
+
+
+``
