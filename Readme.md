@@ -29,3 +29,7 @@ para instalar un paquete especifico en un entorno de pyton se hace con
 python -m pip install SomePackage==1.0.4    # specific version
 ```
 porque los paquetes instalados de forma global no funcionan en un entorno especifico como por ejemplo el creado para este proyecto
+
+# Data Clean
+
+El archivo [Data_clean.ipynb](empleado-aris/Data_clean.ipynb) Trata de como se Trataron los datos para este proyecto
