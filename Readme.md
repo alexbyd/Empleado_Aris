@@ -1,10 +1,11 @@
-# Datos Titanic Passenger
+# Search engine Datos Titanic Passenger
 
 ```
 streamlit run version_02.py 
 ```
 
 Descripción: Este proyecto trata acerca de un buscador interno para una base de datos. Su función es mostrar en pantalla los datos especificos de una persona, con el objetivo de brindar informacion actualizada de los empleados.
+Como ejemplo use un archivo con los daatos del titanic
 
 ![imagen del buscador](path/to/image.png)
 ![imagen del buscador con # de documento](path/to/image.png)
