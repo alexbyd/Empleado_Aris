@@ -14,7 +14,7 @@ Como ejemplo use un archivo con los daatos del titanic
 
 Uno de los retos fue implementar Streamlit para renderizar solo el objeto encontrado con **loc[ # de documento ]** ya que el streamlit-searchbox text solo permitia la busqueda de texto y no de numeros, entonces con python analice la cadena de caracateres y...
 
-<img alt="imagen del buscador con nombre de la persona" src="empleado-aris/Docs/nombre.png"/>
+<img alt="imagen del buscador con nombre de la persona" src="https://github.com/alexdanielbaenayepez/Empleado_Aris/blob/main/Docs/nombre.png"/>
 ```python
 to_numeric = 0
 if text_search.isnumeric():
