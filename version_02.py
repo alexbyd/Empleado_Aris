@@ -6,7 +6,7 @@ import pandas as pd
 st.set_page_config(page_title="Python Titanic Passenger Search Engine", page_icon="🐍", layout="wide")
 st.title("Datos Titanic Passenger") #css color #192547
 
-df = pd.read_excel('Titanic.xlsx').fillna("")
+df = pd.read_csv('Titanic.csv').fillna("")
 
 text_search = st.text_input("Ingrese el Nombre o la Cedula ", value="")
    # Test: Moran, Mr. James
