@@ -5,7 +5,7 @@ streamlit run version_02.py
 ```
 
 Descripción: Este proyecto trata acerca de un buscador interno para una base de datos. Su función es mostrar en pantalla los datos especificos de una persona, con el objetivo de brindar informacion actualizada de los empleados.
-Como ejemplo use un archivo con los daatos del titanic
+Como ejemplo use un archivo con los datos del titanic
 
 ![imagen del buscador con nombre de la persona](https://github.com/alexdanielbaenayepez/Empleado_Aris/blob/main/Docs/documento.png)
 
