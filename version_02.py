@@ -8,6 +8,23 @@ st.title("Datos Titanic Passenger") #css color #192547
 
 df = pd.read_csv('Titanic.csv').fillna("")
 
+to_drop = ['Unnamed: 12',
+           'Unnamed: 13',
+           'Unnamed: 14',
+           'Unnamed: 15',
+           'Unnamed: 16',
+           'Unnamed: 17',
+           'Unnamed: 18',
+           'Unnamed: 19',
+           'Unnamed: 20',
+           'Unnamed: 21',
+           'Unnamed: 22',
+           'Unnamed: 23',
+           'Unnamed: 24',
+           'Unnamed: 25']
+
+df.drop(columns=to_drop, inplace=True, axis=1)
+
 text_search = st.text_input("Ingrese el Nombre o la Cedula ", value="")
    # Test: Moran, Mr. James
 

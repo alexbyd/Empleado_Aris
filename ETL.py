@@ -3,8 +3,6 @@ import pandas as pd
 
 dataframe = pd.read_csv('Titanic.csv')
 
-dataframe.head()
-
 to_drop = ['Unnamed: 12',
            'Unnamed: 13',
            'Unnamed: 14',
@@ -22,4 +20,7 @@ to_drop = ['Unnamed: 12',
 
 dataframe.drop(columns=to_drop, inplace=True, axis=1)
 
-dataframe.isna().sum()
+print("is nan .sum")
+print(dataframe.isna().sum())
+dataframe.isna().sum()# plot colunms contains isnan 
+# corregir nombres con puntos y carecteres herroneos, 
