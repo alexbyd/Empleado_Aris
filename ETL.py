@@ -23,4 +23,8 @@ dataframe.drop(columns=to_drop, inplace=True, axis=1)
 print("is nan .sum")
 print(dataframe.isna().sum())
 dataframe.isna().sum()# plot colunms contains isnan 
-# corregir nombres con puntos y carecteres herroneos, 
+# corregir nombres con puntos y carecteres herroneos,
+
+dataframe['Age'] = dataframe["Age"].fillna(dataframe["Age"].mean())
+dataframe['Age'].astype(str).str.replace(r"[,\s]", "", regex=True).replace("", None).astype(float)
+print(dataframe.Age)
