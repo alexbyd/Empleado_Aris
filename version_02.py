@@ -43,22 +43,28 @@ if text_search.isnumeric():
    # Test: 543
 
 
-df_search = df[df["Name"].str.contains(text_search)]
+df_search = df[df["Name"].str.contains(text_search)]  # https://docs.streamlit.io/develop/concepts/design/dataframes
 if text_search.__contains__(" "):
    st.write(df_search)
 
 
 #  Metricas  https://hackernoon.com/lang/es/15-conjuntos-de-datos-de-excel-para-principiantes-en-analisis-de-datos
 # media de edad, supervivencia, promedio tiquete
-
+# add css https://dev.to/barrisam/how-to-style-streamlit-metrics-in-custom-css-4h14
+# para editar las metricas y su estilo
 
 col1, col2, col3 = st.columns(3)
-col1.metric("Total tiquetes vendidos",df['Ticket'].count())
+col1.metric("Total tiquetes vendidos",df['Ticket'].count(), border=True)
+col2.metric("Media edad supervivientes", df['Age'].astype(str).str.replace(r"[,\s]", "", regex=True)
+       .replace("", None).astype(float).mean().astype(int), border=True)
+col3.metric("Promedio valor tiquete $:", df["Fare"].mean().astype(int), border=True)
+# recuento = dataframe.groupby('Pclass')['Survived'].count()
+
 
 
 # Grafica supervivencia por genero
 gender = df['Sex'].value_counts()
-fig, ax = plt.subplots(figsize=(7, 6))
+fig, ax = plt.subplots()
 bar_color = ['tab:red', 'tab:blue']
 ax = gender.plot(kind='bar', rot=0, color=bar_color)
 ax.set_title("Bar Graph of Gender", y = 1)
@@ -67,9 +73,29 @@ ax.set_ylabel('Number of People')
 ax.set_xticklabels(('Male', 'Female'))
 st.pyplot(fig)
 
-# Grafica pasajero por embarcacion
+# Grafica edad sosbrevivientes
+
+fig2, axe = plt.subplots()
+edad= (df['Age'].astype(str).str.replace(r"[,\s]", "", regex=True)
+       .replace("", None).astype(float))
+axe = edad.plot(kind="hist")
+
+st.pyplot(fig2)
+
+
 # tabla de contingencia edades vs sexo
 
+N = len(df.Age)
+k = int(1 + np.log2(N))
+
+intervalos = pd.cut(df["Age"].astype(str).str.replace(r"[,\s]", "", regex=True)
+       .replace("", None).astype(float), bins=k, include_lowest=True)
+tabla = pd.crosstab(intervalos, df.Sex)
+
+st.table(tabla)
+
+
+# Grafico circular
 
 
 
