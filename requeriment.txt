@@ -1,0 +1,9 @@
+streamlit
+pandas 
+numpy 
+seaborn
+matplotlib
+cufflinks
+
+Agrupar salespor "type", tomar la suma de "weekly_sales"y almacenar como sales_by_type.
+Calcula la proporción de ventas en cada tipo de tienda dividiendo por la suma de sales_by_type. Asigna a sales_propn_by_type.

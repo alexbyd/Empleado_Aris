@@ -4,31 +4,35 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+import cufflinks as cf
+cf.set_config_file(offline=True)
 
 
 
 st.set_page_config(page_title="Python Titanic Passenger Search Engine", page_icon="🐍", layout="wide")
-st.title("Datos Titanic Passenger")
+st.title("Datos. Titanic Passenger")
 
-df = pd.read_csv('Titanic.csv').fillna("")
+df = pd.read_csv('Titanic.csv', usecols=[
+'PassengerId', 'Survived', 'Pclass', 'Name', 'Sex', 'Age', 'SibSp',
+       'Parch', 'Ticket', 'Fare', 'Cabin', 'Embarked'
+]).fillna("")
 
-to_drop = ['Unnamed: 12',
-           'Unnamed: 13',
-           'Unnamed: 14',
-           'Unnamed: 15',
-           'Unnamed: 16',
-           'Unnamed: 17',
-           'Unnamed: 18',
-           'Unnamed: 19',
-           'Unnamed: 20',
-           'Unnamed: 21',
-           'Unnamed: 22',
-           'Unnamed: 23',
-           'Unnamed: 24',
-           'Unnamed: 25']
+fit = df.groupby('Sex')
+#plt.bar(fit, df['Age'])
+#st.pyplot(plt)
 
-df.drop(columns=to_drop, inplace=True, axis=1)
 
+dataframe = pd.read_csv('adidas.csv', usecols=[
+    'Retailer', 'Invoice Date', 'Region', 'Product', 'Price per Unit', 'Units Sold'
+])
+#print(dataframe.dtypes)
+grupo = dataframe.groupby('Region').sum()
+st.write(grupo)
+#plt.barh(dataframe['Product'], dataframe['Price per Unit'])
+
+
+#plt.barh(dataframe['Region'], dataframe['Units Sold'])
+#st.pyplot(plt)
 
 # Buscador
 text_search = st.text_input("Ingrese el Nombre o la Cedula ", value="")
@@ -48,13 +52,13 @@ if text_search.__contains__(" "):
    st.write(df_search)
 
 
-#  Metricas  https://hackernoon.com/lang/es/15-conjuntos-de-datos-de-excel-para-principiantes-en-analisis-de-datos
+#  Metricas  https://hackrnoon.com/lang/es/15-conjuntos-de-datos-de-excel-para-principiantes-en-analisis-de-datos
 # media de edad, supervivencia, promedio tiquete
 # add css https://dev.to/barrisam/how-to-style-streamlit-metrics-in-custom-css-4h14
 # para editar las metricas y su estilo
 
 col1, col2, col3 = st.columns(3)
-col1.metric("Total tiquetes vendidos",df['Ticket'].count(), border=True)
+col1.metric("Total tiquetes vendidos: ",df['Ticket'].count(), border=True)
 col2.metric("Media edad supervivientes", df['Age'].astype(str).str.replace(r"[,\s]", "", regex=True)
        .replace("", None).astype(float).mean().astype(int), border=True)
 col3.metric("Promedio valor tiquete $:", df["Fare"].mean().astype(int), border=True)
@@ -71,7 +75,7 @@ ax.set_title("Bar Graph of Gender", y = 1)
 ax.set_xlabel('Gender')
 ax.set_ylabel('Number of People')
 ax.set_xticklabels(('Male', 'Female'))
-st.pyplot(fig)
+#st.pyplot(fig)
 
 # Grafica edad sosbrevivientes
 
@@ -80,7 +84,7 @@ edad= (df['Age'].astype(str).str.replace(r"[,\s]", "", regex=True)
        .replace("", None).astype(float))
 axe = edad.plot(kind="hist")
 
-st.pyplot(fig2)
+#st.pyplot(fig2)
 
 
 # tabla de contingencia edades vs sexo
@@ -92,7 +96,7 @@ intervalos = pd.cut(df["Age"].astype(str).str.replace(r"[,\s]", "", regex=True)
        .replace("", None).astype(float), bins=k, include_lowest=True)
 tabla = pd.crosstab(intervalos, df.Sex)
 
-st.table(tabla)
+#st.table(tabla)
 
 
 # Grafico circular
